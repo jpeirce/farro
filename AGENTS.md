@@ -15,3 +15,7 @@ While the final agentd executable will have these paths hardcoded, these pointer
 *   Manager: agents/Manager/AGENTS-ROLE.md
 *   Doc Writer: agents/DocWriter/AGENTS-ROLE.md
 *   Junior Engineer: agents/JuniorEngineer/AGENTS-ROLE.md
+
+---
+
+For definitions of key terms used in the FARRO project, please refer to the [Glossary](docs/GLOSSARY.md).

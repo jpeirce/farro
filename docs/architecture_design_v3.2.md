@@ -44,7 +44,29 @@ The system is composed of several Clojure modules, each with a distinct responsi
 (Unchanged from v3.1)
 
 ## 5. Job Status State Machine
-(Unchanged from v3.1)
+
+The FARRO job lifecycle is governed by a well-defined state machine, ensuring predictable transitions and robust error handling. The following diagram illustrates the possible states and transitions:
+
+```mermaid
+graph TD
+    Q[Queued] --> I{In-Progress}
+    I --> S{Succeeded}
+    I --> F{Failed}
+    I --> T{Stale}
+    F --> Q
+    F --> K[Killed]
+    T --> Q
+    T --> K
+```
+
+*   **Queued:** The initial state for a job, awaiting processing by an agent.
+*   **In-Progress:** A job currently being processed by an agent.
+*   **Succeeded:** A terminal state indicating successful completion of the job.
+*   **Failed:** A state indicating the job encountered an error during processing. From here, it can be requeued or killed.
+*   **Stale:** A state indicating a job was in-progress but its worker crashed or became unresponsive. From here, it can be requeued or killed.
+*   **Killed:** A terminal state indicating the job has been explicitly terminated and will not be reprocessed.
+
+Legal state transitions are enforced by the `job.clj` module.
 
 ## 6. Idempotent Transactions
 
