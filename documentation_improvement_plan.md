@@ -2,7 +2,7 @@
 
 **Date:** 2025-11-16
 
-This plan outlines concrete actions to address the "Strong Suggestions" and "Nice-to-haves" identified in the `review_report_for_manager.md`, incorporating feedback from the `review_of_doc_improvement_plan.md`. The goal is to enhance the clarity, consistency, and maintainability of the FARRO project's documentation.
+This plan outlines concrete actions to address the "Strong Suggestions" and "Nice-to-haves" identified in the `review_report_for_manager.md`, incorporating feedback from the `review_of_doc_improvement_plan.md` and `review_of_updated_doc_improvement_plan.md`. The goal is to enhance the clarity, consistency, and maintainability of the FARRO project's documentation.
 
 ## 1. Strong Suggestions - Action Plan
 
@@ -18,6 +18,12 @@ This plan outlines concrete actions to address the "Strong Suggestions" and "Nic
 *   **Action:** Formalize and communicate the process for versioning and reviewing documentation changes.
 *   **Details:**
     *   **Create `CONTRIBUTING.md` if it doesn't exist.** Add a new section to `CONTRIBUTING.md` (or create the file if it's missing) detailing the expected process for proposing, reviewing, and merging documentation changes. This should mirror the code review process (e.g., pull requests, peer review).
+    *   **Example `CONTRIBUTING.md` Section (Key Topics):**
+        *   How to propose a documentation change (e.g., branch naming, pull request process).
+        *   Guidelines for writing clear and concise documentation.
+        *   Standards for using Mermaid diagrams.
+        *   How to link to the glossary.
+        *   Expectations for peer review of documentation.
     *   Reinforce the use of a clear versioning scheme (e.g., `vX.Y.md` for major architectural documents) and explain when new versions should be created.
 *   **Benefit:** Ensures documentation accuracy, reliability, and that it evolves synchronously with the codebase.
 
@@ -34,7 +40,7 @@ This plan outlines concrete actions to address the "Strong Suggestions" and "Nic
 ### 2.1. Diagrams/Visualizations
 *   **Action:** Identify key architectural concepts and create visual representations to enhance understanding.
 *   **Details:**
-    *   Prioritize creating diagrams for the job status state machine and the interaction flow between `agentd`, `managerd`, and `watchdogd`.
+    *   **Prioritization:** Start with the job status state machine as it is fundamental to understanding the core job lifecycle, followed by daemon interaction flows.
     *   Utilize **Mermaid** as the standardized text-based diagramming tool.
     *   Integrate these diagrams into the relevant architectural design documents (e.g., `docs/architecture_design_vX.Y.md`).
 *   **Benefit:** Significantly improves the clarity and accessibility of complex system behaviors and interactions for all stakeholders.
@@ -48,5 +54,16 @@ This plan outlines concrete actions to address the "Strong Suggestions" and "Nic
     *   **Linking Strategy:** Terms should be linked on their first occurrence in a document, or when their definition is critical for understanding the immediate context.
 *   **Benefit:** Facilitates quicker onboarding for new team members and ensures a consistent understanding of project terminology across the team.
 
+## 3. High-Level Timeline/Phasing
+
+*   **Phase 1 (Immediate):**
+    *   Consolidate Agent Policies (1.1)
+    *   Create Glossary (2.2)
+*   **Phase 2 (Short-term):**
+    *   Formalize Version Control for Documentation (1.2)
+    *   Implement Actionable Items Tracking (1.3)
+*   **Phase 3 (Ongoing):**
+    *   Diagrams/Visualizations (2.1) - Integrate as architectural documents are updated or new features are designed.
+
 ---
-This plan provides a roadmap for enhancing the FARRO project's documentation, making it more robust, accessible, and aligned with the project's evolving architecture.
+This plan provides a robust and actionable roadmap for enhancing the FARRO project's documentation, making it more robust, accessible, and aligned with the project's evolving architecture.
