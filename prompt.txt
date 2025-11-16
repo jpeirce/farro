@@ -1,0 +1,13 @@
+You are an expert Clojure software engineer specializing in highly concurrent, cross-platform systems. Your task is to implement the "farro" Orchestrator based *entirely* on the attached SPEC-1-farro file.
+
+This is a new Git repository. Your output must be *only* the contents of the required files, using the requested directory structure, separated by clear file paths. Do not include any explanatory prose or markdown before or after the code blocks.
+
+**Prioritize generating the following files for M0/M1 implementation:**
+
+1.  **`deps.edn`**: With all required dependencies (cheshire, http-kit, core.async, tools.logging, etc.) and `:uber`, `:test` aliases.
+2.  **`build.clj`**: The uberjar build script.
+3.  **`app/src/agents/orchestrator/core.clj`**: Implement shared path helpers, JSON parsing/writing, and the `${VAR}` environment variable expansion logic.
+4.  **`app/src/agents/orchestrator/fs.clj`**: The single most critical file. Implement the `create-lock`, `release-lock`, `atomic-move`, and `check-same-volume` functions using `java.nio.file.Files.move` and `java.nio.channels.FileChannel.lock`, strictly adhering to the **Cross-Platform Locking & Atomicity** section, including the **MUST fail fast** on cross-volume moves.
+5.  **`app/src/agents/orchestrator/cli.clj`**: The main entry point using `clojure.tools.cli` to dispatch the `doctor`, `enqueue`, `agentd`, and `managerd` subcommands.
+
+**Assume a successful `doctor` run for all generated code.** You MUST use Clojure standard libraries and the specified dependencies only.

@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Job Prompt",
+  "type": "object",
+  "properties": {
+    "role": {
+      "type": "string",
+      "enum": ["Manager", "SeniorEngineer", "JuniorEngineer", "Architect", "CodeReviewer", "DocWriter"]
+    },
+    "rubric": {
+      "type": "string",
+      "maxLength": 10000
+    },
+    "allowed_paths": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "success": {
+      "type": "string",
+      "maxLength": 5000
+    },
+    "routing": {
+      "type": "object",
+      "oneOf": [
+        {
+          "properties": {
+            "mode": { "const": "manager" }
+          },
+          "required": ["mode"]
+        },
+        {
+          "properties": {
+            "mode": { "const": "role" },
+            "next": { "$ref": "#/properties/role" }
+          },
+          "required": ["mode", "next"]
+        }
+      ]
+    },
+    "context_md": {
+      "type": "string"
+    },
+    "inputs": {
+      "type": "object"
+    },
+    "metadata": {
+      "type": "object"
+    }
+  },
+  "required": ["role", "rubric", "allowed_paths", "success", "routing"]
+}

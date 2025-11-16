@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Agents Configuration",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)(?:-((?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\\.(?:0|[1-9]\\d*|\\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\\+([0-9a-zA-Z-]+(?:\\.[0-9a-zA-Z-]+)*))?$"
+    },
+    "providers": {
+      "type": "object",
+      "properties": {
+        "openai": {
+          "type": "object",
+          "properties": {
+            "api_key": { "type": "string" },
+            "model": { "type": "string" }
+          },
+          "required": ["api_key"]
+        },
+        "google": {
+          "type": "object",
+          "properties": {
+            "api_key": { "type": "string" },
+            "model": { "type": "string" }
+          },
+          "required": ["api_key"]
+        },
+        "openrouter": {
+          "type": "object",
+          "properties": {
+            "api_key": { "type": "string" },
+            "model": { "type": "string" }
+          },
+          "required": ["api_key"]
+        },
+        "cli": {
+          "type": "object",
+          "properties": {
+            "command": { "type": "string" }
+          },
+          "required": ["command"]
+        }
+      }
+    },
+    "security": {
+      "type": "object",
+      "properties": {
+        "max_job_bytes": { "type": "integer", "minimum": 1 },
+        "payload_allowlist": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "allow_absolute_paths": { "type": "boolean" }
+      },
+      "required": ["max_job_bytes", "payload_allowlist"]
+    },
+    "timeouts": {
+      "type": "object",
+      "properties": {
+        "cli_seconds": { "type": "integer", "minimum": 1 }
+      }
+    }
+  },
+  "required": ["version", "providers", "security"]
+}
